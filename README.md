@@ -21,18 +21,47 @@
   libssl-dev \
   libayatana-appindicator3-dev \
   librsvg2-dev
+
   # install rust
   curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
   which rust
   which cargo
 
   ```
-- setup Python
+
+- Backend
+
 ```bash
-uv
+uv venv
+
 ```
 
-- setup typescript
+- Frontend
 ```bash
-bun
+bun create tauri-app@latest my-tauri-app -- --template react-ts
+
+
+```
+
+### folder structure
+
+```bash
+my-tauri-app/
+├── src-tauri/          # Tauri application shell
+│   ├── src/            # Rust code for Tauri
+│   ├── Cargo.toml      # Rust dependencies
+│   └── tauri.conf.json # Tauri configuration
+├── src/                # React TypeScript frontend
+│   ├── components/     # React components
+│   ├── App.tsx         # Main React component
+│   ├── main.tsx        # Entry point
+│   └── ...
+├── python/             # Python backend
+│   ├── api/            # API endpoints
+│   ├── models/         # Data models
+│   ├── services/       # Business logic
+│   ├── main.py         # Main Python entry point
+│   └── requirements.txt
+├── package.json        # NPM dependencies
+└── vite.config.ts      # Vite configuration
 ```
