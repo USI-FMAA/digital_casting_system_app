@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "identifier": "com.digital-casting-app.app",
   "build": {
+		"beforeBuildCommand": "bun run build",
     "beforeDevCommand": "bun run dev",
     "devUrl": "http://localhost:1420",
-    "beforeBuildCommand": "bun run build",
     "frontendDist": "../dist"
   },
   "app": {
