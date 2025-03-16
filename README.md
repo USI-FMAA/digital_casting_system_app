@@ -3,16 +3,19 @@
 ## Description
 
 This app use to control the casting process.
-The app build use `python` for the backend, `react` for the frontend, and `tauri` for the desktop app.
+The app build use `python` for the backend, `react` for the frontend, and build with `tauri` for the desktop app.
 
 ### Usage
+
+> [!NOTE]: WORK IN PROGRESS
+![DEMO](./doc/WIP_SIMPLE_DEMO.png) 
 
 ### Development setup
 
 #### Prerequisites
 
-- setup Tauri  
-   check the [Tauri](https://tauri.app/start/prerequisites/#system-dependencies) documentation for more information
+- setup Tauri
+check the [Tauri](https://tauri.app/start/prerequisites/#system-dependencies) documentation for more information
 
 ```bash
 # system dependencies for WSL/Debian
