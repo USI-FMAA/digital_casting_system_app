@@ -7,7 +7,8 @@ The app build use `python` for the backend, `react` for the frontend, and build 
 
 ### Usage
 
-> [!NOTE]: WORK IN PROGRESS
+> ![NOTE]
+> WORK IN PROGRESS
 ![DEMO](./doc/WIP_SIMPLE_DEMO.png) 
 
 ### Development setup
