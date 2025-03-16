@@ -1,51 +1,46 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
+import { Connect } from "./components/ConnectLogin";
+import { DashBoard } from "./components/DashBoard";
+import { DataViewer } from "./components/DataViewer";
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
+	const [greetMsg, setGreetMsg] = useState("");
+	const devices = [
+		"Main",
+		"Concrete pump",
+		"Dosing pump",
+		"Mixer",
+		"Temperature sensor",
+	];
+	const [name, setName] = useState("");
 
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
-  }
+	async function greet() {
+		// Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
+		setGreetMsg(await invoke("greet", { name }));
+	}
 
-  return (
-    <main className="container">
-      <h1>Welcome to Tauri + React</h1>
-
-      <div className="row">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{greetMsg}</p>
-    </main>
-  );
+	return (
+		<main>
+			<div className="flex flex-row mt-10 mr-10 ml-10 bg-white">
+				{/* project title */}
+				<div className="basis-1/2">
+					<h1 className="text-4xl font-bold">Digital Casting System</h1>
+					<Connect />
+				</div>
+			</div>
+			{/* main panel */}
+			<div className="flex flex-row mr-10 ml-10">
+				<div className="flex-1/5 flex">
+					<DashBoard deviceName={devices}/>
+				</div>
+				<div className="flex-4/5 flex outline-1">
+					<DataViewer />
+				</div>
+			</div>
+		</main>
+	);
 }
 
 export default App;
