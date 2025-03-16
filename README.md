@@ -3,7 +3,7 @@
 ## Description
 
 This app use to control the casting process.
-The app build with `Tauri`, `React`, and `Python`.
+The app build use `python` for the backend, `react` for the frontend, and `tauri` for the desktop app.
 
 ### Usage
 
@@ -59,23 +59,5 @@ bun run tarui build
 
 ### folder structure
 
-```sh
-my-tauri-app/
-├── src-tauri/          # Tauri application shell
-│   ├── src/            # Rust code for Tauri
-│   ├── Cargo.toml      # Rust dependencies
-│   └── tauri.conf.json # Tauri configuration
-├── src/                # React TypeScript frontend
-│   ├── components/     # React components
-│   ├── App.tsx         # Main React component
-│   ├── main.tsx        # Entry point
-│   └── ...
-├── python/             # Python backend
-│   ├── api/            # API endpoints
-│   ├── models/         # Data models
-│   ├── services/       # Business logic
-│   ├── main.py         # Main Python entry point
-│   └── requirements.txt
-├── package.json        # NPM dependencies
-└── vite.config.ts      # Vite configuration
+```bash
 ```
