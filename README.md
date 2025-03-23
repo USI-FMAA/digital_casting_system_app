@@ -6,6 +6,7 @@ This app use to control the casting process.
 The app build use `python` for the backend, `react` for the frontend, and build with `tauri` for the desktop app.
 
 ### Usage
+![Demo](./doc/Demo.png) 
 
 > ![NOTE]
 > WORK IN PROGRESS
