@@ -4,27 +4,35 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Tooltip from "@mui/material/Tooltip";
 import Box from "@mui/material/Box";
+import { usePageStore } from "../store/pageStore";
 
 interface DashBoardProps {
-	deviceName: string[];
+	devices: Map<string, { icon: React.ReactNode; name: string }>;
 }
 
-export const DashBoard: React.FC<DashBoardProps> = ({ deviceName = [] }) => {
+export const DashBoard: React.FC<DashBoardProps> = ({ devices }) => {
 	const [open, setOpen] = React.useState(false);
+	const { currentPage, setCurrentPage } = usePageStore();
 	const [selectedDevice, setSelectedDevice] = useState<string | null>(null);
 
 	const toggleDrawer = (newOpen: boolean) => () => {
 		setOpen(newOpen);
 	};
 
+	const handlePageChange = (deviceName: string) => {
+		setCurrentPage(deviceName);
+		setSelectedDevice(deviceName);
+	};
+
 	// Generate buttons dynamically using the deviceName prop
-	const buttons = deviceName.map((device, index) => (
-		<Tooltip key={index} title={device} placement="right">
+	const buttons = [...devices.entries()].map(([key, device]) => (
+		<Tooltip key={key} title={device.name} placement="right">
 			<Button
-				onClick={() => setSelectedDevice(device)}
-				variant={selectedDevice === device ? "contained" : "outlined"}
+				onClick={handlePageChange.bind(null, key)}
+				variant={selectedDevice === key ? "contained" : "outlined"}
 			>
-				{device}
+				{device.icon}
+				{device.name.toLowerCase()}
 			</Button>
 		</Tooltip>
 	));
@@ -37,8 +45,10 @@ export const DashBoard: React.FC<DashBoardProps> = ({ deviceName = [] }) => {
 				variant="contained"
 				color="info"
 			>
-				{deviceName.length > 0 ? buttons : (
-					<Tooltip title="No devices available" placement="right">
+				{devices.size > 0 ? (
+					buttons
+				) : (
+					<Tooltip title="No devices available" placement="bottom-end">
 						<Button disabled>No devices</Button>
 					</Tooltip>
 				)}
